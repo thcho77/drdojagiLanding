@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { Check, Instagram, ExternalLink, ArrowRight, ChevronRight } from "lucide-react";
 
+import faviconImg from "@/imports/image-1.png";
 import heroImg from "@/imports/magnific_2_9RCbwkpNYZ-1.png";
 import model2Img from "@/imports/magnific_2_62uk3GriJO-1.png";
 import clinicalImg from "@/imports/magnific_3-2_1sVBFL0r4r-1.png";
@@ -117,6 +118,17 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [showIngredients, setShowIngredients] = useState(false);
+
+  useEffect(() => {
+    document.title = "닥터도자기 마스크팩 홈페이지에 오신 것을 환영합니다";
+    // Force favicon refresh (bust cache)
+    document.querySelectorAll("link[rel*='icon']").forEach(el => el.remove());
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.type = "image/x-icon";
+    link.href = "/favicon.ico?v=" + Date.now();
+    document.head.appendChild(link);
+  }, []);
 
   const PURCHASE_URL =
     "https://z-shop.xyz/product/%EB%8B%A5%ED%84%B0%EB%8F%84%EC%9E%90%EA%B8%B0-%ED%95%98%EC%9D%B4%EB%93%9C%EB%9D%BC-%EB%B6%80%EC%8A%A4%ED%8A%B8-%EB%A7%88%EC%8A%A4%ED%81%AC%ED%8C%A9/51/category/162/display/1/";
