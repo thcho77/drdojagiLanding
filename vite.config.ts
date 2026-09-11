@@ -10,21 +10,24 @@ function htmlHeadPlugin(): Plugin {
   return {
     name: 'html-head-meta',
     transformIndexHtml(html) {
-      const inject = `
-    <title>${PAGE_TITLE}</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <meta charset="UTF-8">
-    <meta name="description" content="${PAGE_DESC}">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="${PAGE_TITLE}">
-    <meta property="og:description" content="${PAGE_DESC}">
-    <meta property="og:image" content="/favicon.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="${PAGE_TITLE}">
-    <meta name="twitter:description" content="${PAGE_DESC}">
-    <meta name="twitter:image" content="/favicon.png">`;
-      return html.replace(/<head>/, `<head>${inject}`);
+      const inject = [
+        `<title>${PAGE_TITLE}</title>`,
+        `<meta name="robots" content="index, follow">`,
+        `<link rel="icon" type="image/x-icon" href="/favicon.ico">`,
+        `<link rel="shortcut icon" href="/favicon.ico">`,
+        `<meta name="description" content="${PAGE_DESC}">`,
+        `<meta property="og:type" content="website">`,
+        `<meta property="og:title" content="${PAGE_TITLE}">`,
+        `<meta property="og:description" content="${PAGE_DESC}">`,
+        `<meta property="og:image" content="/favicon.png">`,
+        `<meta name="twitter:card" content="summary_large_image">`,
+        `<meta name="twitter:title" content="${PAGE_TITLE}">`,
+        `<meta name="twitter:description" content="${PAGE_DESC}">`,
+        `<meta name="twitter:image" content="/favicon.png">`,
+      ].join('\n    ');
+      // Remove any existing noindex injected by platform defaults
+      const cleaned = html.replace(/<meta[^>]+content=["'][^"']*noindex[^"']*["'][^>]*>/gi, '');
+      return cleaned.replace(/<head>/, `<head>\n    ${inject}`);
     },
   };
 }

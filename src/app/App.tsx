@@ -10,6 +10,9 @@ import clinicalImg from "@/imports/magnific_3-2_1sVBFL0r4r-1.png";
 import maskPeelImg from "@/imports/magnific_model3-1_gJpm0kjSXO-1.png";
 import maskOnImg from "@/imports/magnific_model3-1_ubA0eljQLD-1.png";
 import productPackImg from "@/imports/______________________________.png";
+import memo1Img from "@/imports/________________________1.png";
+import memo2Img from "@/imports/________________________2.png";
+import memo3Img from "@/imports/________________________3.png";
 import ingredientsBgImg from "@/imports/Generated_Image_July_25__2026_-_9_05PM.jpg";
 import modelFaceImg from "@/imports/magnific_8v7N45TIrU.png";
 import { MenadioneMolecule } from "@/app/components/MenadioneMolecule";
@@ -95,6 +98,13 @@ export default function App() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!showIngredients) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setShowIngredients(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [showIngredients]);
 
   const toggleLang = () => setLang(l => l === "ko" ? "en" : "ko");
 
@@ -229,6 +239,151 @@ export default function App() {
                   {T.brand.link}
                   <ExternalLink size={11} />
                 </a>
+              </div>
+            </RevealSection>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Memo Gallery Section ─── */}
+      <section className="py-20 md:py-28 bg-[#F5F6F3] overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <RevealSection>
+            <p className="text-xs tracking-[0.3em] text-[#7FA980] mb-16 md:mb-20">
+              {lang === "ko" ? "클리닉에서 전하는 이야기" : "From the Clinic"}
+            </p>
+          </RevealSection>
+
+          {/* Scattered memo / polaroid layout */}
+          <div
+            className="flex flex-wrap justify-center gap-8 md:gap-12"
+            style={{ alignItems: "center" }}
+          >
+            {/* Card 1 — Instagram post (focus on left video side) */}
+            <RevealSection delay={0}>
+              <div
+                className="shrink-0 cursor-pointer"
+                style={{
+                  transform: "rotate(-3.5deg) translateY(28px)",
+                  background: "#fff",
+                  padding: "10px 10px 44px 10px",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)",
+                  transition: "transform 0.35s ease, box-shadow 0.35s ease",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(-1.5deg) translateY(20px) scale(1.03)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 48px rgba(0,0,0,0.18), 0 3px 8px rgba(0,0,0,0.09)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(-3.5deg) translateY(28px)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)";
+                }}
+              >
+                <ImageWithFallback
+                  src={memo1Img}
+                  alt="도자기의원 닥터도자기 마스크팩 SNS 게시물"
+                  className="w-40 md:w-56"
+                  style={{ aspectRatio: "3/4", objectFit: "cover", objectPosition: "left top", display: "block" }}
+                />
+                <p className="text-center text-[10px] text-[#AAAAAA] mt-3 tracking-[0.15em]" style={{ fontFamily: CORMORANT }}>
+                  @dojagiclinic
+                </p>
+              </div>
+            </RevealSection>
+
+            {/* Card 2 — Doctor with product (portrait photo) */}
+            <RevealSection delay={120}>
+              <div
+                className="shrink-0 cursor-pointer"
+                style={{
+                  transform: "rotate(2.5deg) translateY(-22px)",
+                  background: "#fff",
+                  padding: "10px 10px 44px 10px",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)",
+                  transition: "transform 0.35s ease, box-shadow 0.35s ease",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(0.5deg) translateY(-14px) scale(1.03)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 48px rgba(0,0,0,0.18), 0 3px 8px rgba(0,0,0,0.09)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(2.5deg) translateY(-22px)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)";
+                }}
+              >
+                <ImageWithFallback
+                  src={memo2Img}
+                  alt="도자기의원 의료진과 닥터도자기 마스크팩"
+                  className="w-36 md:w-48"
+                  style={{ aspectRatio: "3/4", objectFit: "cover", objectPosition: "center top", display: "block" }}
+                />
+                <p className="text-center text-[10px] text-[#AAAAAA] mt-3 tracking-[0.15em]" style={{ fontFamily: CORMORANT }}>
+                  Dojagi Clinic
+                </p>
+              </div>
+            </RevealSection>
+
+            {/* Card 3 — Instagram post 2 (Thai doctors visit) */}
+            <RevealSection delay={240}>
+              <div
+                className="shrink-0 cursor-pointer"
+                style={{
+                  transform: "rotate(-1.8deg) translateY(16px)",
+                  background: "#fff",
+                  padding: "10px 10px 44px 10px",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)",
+                  transition: "transform 0.35s ease, box-shadow 0.35s ease",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(0.2deg) translateY(8px) scale(1.03)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 48px rgba(0,0,0,0.18), 0 3px 8px rgba(0,0,0,0.09)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(-1.8deg) translateY(16px)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)";
+                }}
+              >
+                <ImageWithFallback
+                  src={memo3Img}
+                  alt="태국 원장님들과 도자기의원 방문"
+                  className="w-40 md:w-56"
+                  style={{ aspectRatio: "3/4", objectFit: "cover", objectPosition: "left top", display: "block" }}
+                />
+                <p className="text-center text-[10px] text-[#AAAAAA] mt-3 tracking-[0.15em]" style={{ fontFamily: CORMORANT }}>
+                  @dojagiclinic
+                </p>
+              </div>
+            </RevealSection>
+
+            {/* Card 4 — Product pack */}
+            <RevealSection delay={360}>
+              <div
+                className="shrink-0 cursor-pointer"
+                style={{
+                  transform: "rotate(3.8deg) translateY(-18px)",
+                  background: "#fff",
+                  padding: "10px 10px 44px 10px",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)",
+                  transition: "transform 0.35s ease, box-shadow 0.35s ease",
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(1.5deg) translateY(-10px) scale(1.03)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 16px 48px rgba(0,0,0,0.18), 0 3px 8px rgba(0,0,0,0.09)";
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = "rotate(3.8deg) translateY(-18px)";
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.07)";
+                }}
+              >
+                <ImageWithFallback
+                  src={productPackImg}
+                  alt="닥터도자기 하이드라 부스트 마스크팩 23g"
+                  className="w-32 md:w-44 bg-[#F0F0F0]"
+                  style={{ aspectRatio: "1/1", objectFit: "contain", display: "block" }}
+                />
+                <p className="text-center text-[10px] text-[#AAAAAA] mt-3 tracking-[0.15em]" style={{ fontFamily: CORMORANT }}>
+                  Hydra Boost · 23g
+                </p>
               </div>
             </RevealSection>
           </div>
@@ -568,6 +723,11 @@ export default function App() {
                   </tbody>
                 </table>
               </div>
+              <p className="text-right px-6 py-3 text-[11px] text-[#9A9A9A] font-light" style={{ borderTop: "1px solid rgba(63,94,67,0.06)" }}>
+                {lang === "ko"
+                  ? "* 상기 비교표는 비타민 K 계열 성분의 비교 내용으로 제품의 의학적 효능을 표시하는 것은 아닙니다."
+                  : "* The above comparison is for informational purposes only and does not represent the medical efficacy of the product."}
+              </p>
             </div>
           </RevealSection>
         </div>
@@ -746,7 +906,7 @@ export default function App() {
           </div>
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
             <p className="text-xs text-[#5A5A5A] font-light">
-              © 2024 Dr. DOJAGI. All rights reserved. — Dojagi Clinic
+              © 2026 Dr. DOJAGI. All rights reserved. — Dojagi Clinic
             </p>
             <a
               href="#"
