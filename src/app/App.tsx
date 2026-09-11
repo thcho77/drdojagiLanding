@@ -122,10 +122,10 @@ export default function App() {
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-          <ImageWithFallback
+          <img
             src={biLogoImg}
             alt="Dr. DOJAGI"
-            className="h-9 w-auto object-contain"
+            style={{ height: "36px", width: "auto", display: "block", objectFit: "contain" }}
           />
           <nav className="hidden md:flex items-center gap-8">
             {[
@@ -886,9 +886,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between gap-12 mb-12">
             <div>
-              <p className="text-2xl tracking-[0.25em] font-light text-white mb-1" style={{ fontFamily: CORMORANT }}>
-                Dr. DOJAGI
-              </p>
+              <img
+                src={biLogoImg}
+                alt="Dr. DOJAGI"
+                style={{ height: "32px", width: "auto", display: "block", objectFit: "contain", filter: "brightness(0) invert(1)", marginBottom: "4px" }}
+              />
               <p className="text-xs tracking-[0.2em] text-[#7A8C7B]">HYDRA BOOST MASK PACK</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs text-[#7A8C7B] font-light leading-[2]">
