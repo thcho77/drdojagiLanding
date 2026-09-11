@@ -13,6 +13,7 @@ import productPackImg from "@/imports/______________________________.png";
 import memo1Img from "@/imports/________________________1.png";
 import memo2Img from "@/imports/________________________2.png";
 import memo3Img from "@/imports/________________________3.png";
+import biLogoImg from "@/imports/______BI-removebg-preview-________.png";
 import ingredientsBgImg from "@/imports/Generated_Image_July_25__2026_-_9_05PM.jpg";
 import modelFaceImg from "@/imports/magnific_8v7N45TIrU.png";
 import { MenadioneMolecule } from "@/app/components/MenadioneMolecule";
@@ -121,9 +122,11 @@ export default function App() {
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-          <span className="text-lg tracking-[0.2em] font-light text-[#2B2B2B]" style={{ fontFamily: CORMORANT }}>
-            Dr. DOJAGI
-          </span>
+          <ImageWithFallback
+            src={biLogoImg}
+            alt="Dr. DOJAGI"
+            className="h-9 w-auto object-contain"
+          />
           <nav className="hidden md:flex items-center gap-8">
             {[
               { label: T.nav.brand,       href: "#brand" },
@@ -263,6 +266,7 @@ export default function App() {
             <RevealSection delay={0}>
               <div
                 className="shrink-0 cursor-pointer"
+                onClick={() => window.open("https://www.instagram.com/p/DZzn-1Jyfpj/", "_blank", "noopener,noreferrer")}
                 style={{
                   transform: "rotate(-3.5deg) translateY(28px)",
                   background: "#fff",
@@ -295,6 +299,7 @@ export default function App() {
             <RevealSection delay={120}>
               <div
                 className="shrink-0 cursor-pointer"
+                onClick={() => window.open("https://www.instagram.com/p/DZhh9o5zoi5/", "_blank", "noopener,noreferrer")}
                 style={{
                   transform: "rotate(2.5deg) translateY(-22px)",
                   background: "#fff",
@@ -327,6 +332,7 @@ export default function App() {
             <RevealSection delay={240}>
               <div
                 className="shrink-0 cursor-pointer"
+                onClick={() => window.open("https://www.instagram.com/p/DZCS_-uzy4A/", "_blank", "noopener,noreferrer")}
                 style={{
                   transform: "rotate(-1.8deg) translateY(16px)",
                   background: "#fff",
@@ -359,6 +365,7 @@ export default function App() {
             <RevealSection delay={360}>
               <div
                 className="shrink-0 cursor-pointer"
+                onClick={() => window.open("https://smartstore.naver.com/zshop_official/products/13703821553", "_blank", "noopener,noreferrer")}
                 style={{
                   transform: "rotate(3.8deg) translateY(-18px)",
                   background: "#fff",
