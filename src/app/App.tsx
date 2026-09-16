@@ -3,7 +3,6 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { Check, Instagram, ExternalLink, ArrowRight, ChevronRight } from "lucide-react";
 import { TRANSLATIONS, INGREDIENT_META, type Lang } from "@/app/components/i18n";
 
-import faviconImg from "@/imports/image-1.png";
 import heroImg from "@/imports/magnific_2_9RCbwkpNYZ-1.png";
 import model2Img from "@/imports/magnific_2_62uk3GriJO-1.png";
 import clinicalImg from "@/imports/magnific_3-2_1sVBFL0r4r-1.png";
